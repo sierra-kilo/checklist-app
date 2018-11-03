@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000
 const pgp = require('pg-promise')(/*options*/)
 const db = pgp('postgres://sierrakilo@localhost:5432/sampledb')
 
-db.many('SELECT name FROM people;', 123)
+db.many('SELECT name FROM people;')
   .then((data) => {
     data.forEach(name => {
       console.log(`Name: ${name.name}`)
