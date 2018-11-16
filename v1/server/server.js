@@ -1,18 +1,17 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3000
 
-const pgp = require('pg-promise')(/*options*/)
-const db = pgp('postgres://sierrakilo@localhost:5432/sampledb')
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
 
-db.many('SELECT name FROM people;')
-  .then((data) => {
-    data.forEach(name => {
-      console.log(`Name: ${name.name}`)
-    })
-  })
-  .catch((error) => {
-    console.log('ERROR:', error)
-  })
+
+// routes
+require('./routes/api.js')(app)
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
