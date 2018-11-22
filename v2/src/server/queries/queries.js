@@ -16,6 +16,21 @@ const getChecklists = (request, response) => {
   })
 }
 
+const createChecklist = (req, res) => {
+  console.log(req.body);
+  return pool.query('INSERT INTO checklist (name, description) VALUES ($1, $2)', [req.body.name, req.body.description])
+  .then((result) => {
+    // console.log('result?', result);
+    res.redirect('/')
+  })
+  .catch((err) => {
+    console.log('err', err);
+    res.redirect('/')
+  })
+}
+
+
 module.exports = {
-getChecklists
+getChecklists,
+createChecklist
 }
