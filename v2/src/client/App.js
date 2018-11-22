@@ -12,6 +12,7 @@ export default class App extends Component {
 
   this.fetchCheckLists = this.fetchCheckLists.bind(this)
   this.postChecklist = this.postChecklist.bind(this)
+  this.deleteChecklist = this.deleteChecklist.bind(this)
 
   }
 
@@ -38,7 +39,27 @@ export default class App extends Component {
       headers:{
         'Content-Type': 'application/json'
       }
-    }).then(res => res.json())
+    })
+    .then(location.reload())
+    .then(res => res.json())
+      .then(response => console.log('Success:', JSON.stringify(response)))
+      .catch(error => console.error('Error:', error));
+  }
+
+
+  deleteChecklist = (checklist_id) => {
+    fetch('/api/checklist', {
+      method: 'DELETE',
+      body: JSON.stringify(
+        {
+          'id': checklist_id,
+        }), // data can be `string` or {object}!
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(location.reload())
+    .then(res => res.json())
       .then(response => console.log('Success:', JSON.stringify(response)))
       .catch(error => console.error('Error:', error));
   }
@@ -53,7 +74,6 @@ export default class App extends Component {
           onSubmit={(e) => {
             e.preventDefault()
             this.postChecklist()
-            .then(this.fetchCheckLists())
           }}
           >
             <input id='name' type='text' placeholder='name'></input>
@@ -65,16 +85,23 @@ export default class App extends Component {
         <div>
           <h2>Checklists</h2>
           <div>
-            <ul className='collection'>
-             {this.state.allCheckLists.map((checklist) => {
-               return (
-                 <li>
-                  { checklist.checklist }, { checklist.id }
-                 </li>
-               )
-               })}
+            <table className='collection'>
+              <tbody>
+               {this.state.allCheckLists.map((checklist) => {
+                 return (
+                   <tr>
+                   <td>{ checklist.checklist }  </td>
+                   <td className='id'>{ checklist.id }  </td>
+                   <td><button onClick={e => {
+                     e.preventDefault()
+                     this.deleteChecklist(checklist.id)}}
+                   >Delete</button></td>
 
-            </ul>
+                   </tr>
+                 )
+                 })}
+              </tbody>
+            </table>
 
           </div>
         </div>

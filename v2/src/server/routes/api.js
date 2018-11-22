@@ -8,7 +8,9 @@ module.exports = function(app) {
 
 
   // POST route for saving a new post
-  app.post("/api/checklist/", db.createChecklist);
+  app.post("/api/checklist", db.createChecklist);
+
+  app.delete('/api/checklist', db.deleteChecklist)
 
   // DELETE route for deleting checklist
 //   app.delete("/api/checklist/", function(req, res) {
