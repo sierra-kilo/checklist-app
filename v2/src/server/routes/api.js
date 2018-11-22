@@ -11,15 +11,15 @@ module.exports = function(app) {
   app.post("/api/checklist/", db.createChecklist);
 
   // DELETE route for deleting checklist
-  app.delete("/api/checklist/", function(req, res) {
-    db.Email.destroy({
-      where: {
-        // when using fetch must pass in state value as Data to use body
-        email: req.body.email
-      }
-    })
-    .then(function(dbEmail) {
-      res.json(dbEmail);
-    });
-  });
+//   app.delete("/api/checklist/", function(req, res) {
+//     db.Email.destroy({
+//       where: {
+//         // when using fetch must pass in state value as Data to use body
+//         email: req.body.email
+//       }
+//     })
+//     .then(function(dbEmail) {
+//       res.json(dbEmail);
+//     });
+//   });
 };
