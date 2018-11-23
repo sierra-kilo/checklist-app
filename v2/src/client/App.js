@@ -43,7 +43,7 @@ export default class App extends Component {
     .then(location.reload())
     .then(res => res.json())
       .then(response => console.log('Success:', JSON.stringify(response)))
-      .catch(error => console.error('Error:', error));
+      .catch(err => console.error('Error:', err));
   }
 
 
@@ -61,7 +61,7 @@ export default class App extends Component {
     .then(location.reload())
     .then(res => res.json())
       .then(response => console.log('Success:', JSON.stringify(response)))
-      .catch(error => console.error('Error:', error));
+      .catch(err => console.error('Error:', err));
   }
 
   render() {

@@ -1,4 +1,4 @@
-const db = require('../queries/queries')
+const db = require('../models/db')
 
 
 module.exports = function(app) {

@@ -8,9 +8,9 @@ const pool = new Pool({
 })
 
 const getChecklists = (request, response) => {
-  pool.query('SELECT * FROM checklist', (error, results) => {
-    if (error) {
-      throw error
+  pool.query('SELECT * FROM checklist', (err, results) => {
+    if (err) {
+      throw err
     }
     response.json(results.rows)
   })
