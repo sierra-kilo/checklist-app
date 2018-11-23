@@ -1,10 +1,10 @@
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: 'sierrakilo',
-  host: 'localhost',
-  database: 'basic_checklist',
-  password: '',
-  port: 5432,
+  user: process.env.LOCAL_DB_USER,
+  host: process.env.LOCAL_DB_HOST,
+  database: process.env.LOCAL_DB_DATABASE,
+  password: process.env.LOCAL_DB_PASS,
+  port: process.env.LOCAL_DB_PORT,
 })
 
 const getChecklists = (request, response) => {
