@@ -1,16 +1,16 @@
-const db = require('../models/db')
+const Checklist = require('../models/checklist')
 
 
 module.exports = function(app) {
 
   // GET route for getting all of the checklists
-  app.get('/api/checklist', db.getChecklists)
+  app.get('/api/checklist', Checklist.getChecklists)
 
 
   // POST route for saving a new post
-  app.post("/api/checklist", db.createChecklist);
+  app.post("/api/checklist", Checklist.createChecklist);
 
-  app.delete('/api/checklist', db.deleteChecklist)
+  app.delete('/api/checklist', Checklist.deleteChecklist)
 
   // DELETE route for deleting checklist
   //   app.delete("/api/checklist/", function(req, res) {
