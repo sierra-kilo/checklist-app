@@ -1,12 +1,23 @@
 const db = require('./db');
 
-const getChecklists = (req, res) => {
-  db.pool.query('SELECT * FROM checklist', (err, results) => {
-    if (err) {
-      throw err
-    }
-    res.json(results.rows)
-  })
+// const getChecklists = (req, res) => {
+//   db.pool.query('SELECT * FROM checklist', (err, results) => {
+//     if (err) {
+//       throw err
+//     }
+//     res.json(results.rows)
+//   })
+// }
+
+// Returns a Promise of an array of checklist rows
+async function findAll() {
+     const sql = 'SELECT c.* FROM checklist c ORDER BY c.id'
+     const result = await db.pool.query(sql);
+     if (err) {
+       throw err
+     }
+     res.json(result.rows)
+     // A complete example would convert the rows into a custom object
 }
 
 const createChecklist = (req, res) => {
@@ -29,7 +40,8 @@ const deleteChecklist = (req, res) => {
 
 
 module.exports = {
-  getChecklists,
+  findAll,
+  // getChecklists,
   createChecklist,
   deleteChecklist
 }

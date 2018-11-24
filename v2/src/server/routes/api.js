@@ -1,4 +1,4 @@
-const Checklist = require('../models/checklist')
+const Checklist = require('../controllers/checklist')
 
 
 module.exports = function(app) {
@@ -8,9 +8,9 @@ module.exports = function(app) {
 
 
   // POST route for saving a new post
-  app.post("/api/checklist", Checklist.createChecklist);
-
-  app.delete('/api/checklist', Checklist.deleteChecklist)
+  // app.post("/api/checklist", Checklist.createChecklist);
+  //
+  // app.delete('/api/checklist', Checklist.deleteChecklist)
 
   // DELETE route for deleting checklist
   //   app.delete("/api/checklist/", function(req, res) {
