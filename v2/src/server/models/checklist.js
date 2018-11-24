@@ -11,12 +11,9 @@ const db = require('./db');
 
 // Returns a Promise of an array of checklist rows
 async function findAll() {
-     const sql = 'SELECT c.* FROM checklist c ORDER BY c.id'
+     const sql = 'SELECT * FROM checklist ORDER BY checklist_id'
      const result = await db.query(sql);
-     if (err) {
-       throw err
-     }
-     res.json(result.rows)
+     return result.rows
      // A complete example would convert the rows into a custom object
 }
 

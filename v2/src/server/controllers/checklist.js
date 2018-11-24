@@ -8,3 +8,7 @@ async function getChecklists(req, res) {
      // Send it to the client as a JSON response
      res.send(list);
 }
+
+module.exports = {
+  getChecklists
+}
