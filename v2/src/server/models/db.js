@@ -8,5 +8,5 @@ const pool = new Pool({
 })
 
 module.exports = {
-  pool
+  query: pool.query.bind(pool)
 }
