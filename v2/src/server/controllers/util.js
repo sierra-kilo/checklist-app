@@ -5,6 +5,7 @@ function asyncWrap(fn) {
          fn(req, res, next).catch(next);
      }
 }
+
 module.exports = {
-     asyncWrap,
+     asyncWrap
 }

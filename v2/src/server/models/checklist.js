@@ -20,28 +20,28 @@ async function findAll() {
      // A complete example would convert the rows into a custom object
 }
 
-const createChecklist = (req, res) => {
-  // console.log(req.body);
-  db.pool.query('INSERT INTO checklist (name, description) VALUES ($1, $2)', [req.body.name, req.body.description])
-    .catch((err) => {
-      console.log('err', err)
-      res.redirect('/')
-    })
-}
-
-const deleteChecklist = (req, res) => {
-  // console.log(req)
-  db.pool.query('DELETE FROM checklist WHERE checklist_id=$1', [req.body.id])
-    .catch(err => {
-      console.log(err);
-      res.redirect('/')
-    })
-}
+// const createChecklist = (req, res) => {
+//   // console.log(req.body);
+//   db.pool.query('INSERT INTO checklist (name, description) VALUES ($1, $2)', [req.body.name, req.body.description])
+//     .catch((err) => {
+//       console.log('err', err)
+//       res.redirect('/')
+//     })
+// }
+//
+// const deleteChecklist = (req, res) => {
+//   // console.log(req)
+//   db.pool.query('DELETE FROM checklist WHERE checklist_id=$1', [req.body.id])
+//     .catch(err => {
+//       console.log(err);
+//       res.redirect('/')
+//     })
+// }
 
 
 module.exports = {
-  findAll,
+  findAll
   // getChecklists,
-  createChecklist,
-  deleteChecklist
+  // createChecklist,
+  // deleteChecklist
 }

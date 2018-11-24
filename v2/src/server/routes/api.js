@@ -1,8 +1,6 @@
 const { asyncWrap } = require('../controllers/util')
 const cChecklist = require('../controllers/checklist')
 
-
-
 module.exports = function(app) {
 
   // GET route for getting all of the checklists
