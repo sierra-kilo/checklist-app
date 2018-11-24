@@ -1,5 +1,4 @@
 // controllers/checklist.js
-const { asyncWrap } = require('./util');
 const Checklist = require('../models/checklist');
 
 async function getChecklists(req, res) {
