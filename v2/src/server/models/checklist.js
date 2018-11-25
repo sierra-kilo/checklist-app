@@ -1,14 +1,5 @@
 const db = require('./db');
 
-// const getChecklists = (req, res) => {
-//   db.pool.query('SELECT * FROM checklist', (err, results) => {
-//     if (err) {
-//       throw err
-//     }
-//     res.json(results.rows)
-//   })
-// }
-
 // Returns a Promise of an array of checklist rows
 async function findAll() {
   const sql = 'SELECT * FROM checklist ORDER BY checklist_id'
