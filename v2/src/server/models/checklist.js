@@ -23,6 +23,12 @@ async function addOne(name, description) {
   const result = await db.query(sql, params)
 }
 
+async function deleteOne(id) {
+  const params = [id]
+  const sql = 'DELETE FROM checklist WHERE checklist_id=$1'
+  const result = await db.query(sql, params)
+}
+
 // const createChecklist = (req, res) => {
 //   // console.log(req.body);
 //   db.pool.query('INSERT INTO checklist (name, description) VALUES ($1, $2)', [req.body.name, req.body.description])
@@ -44,7 +50,8 @@ async function addOne(name, description) {
 
 module.exports = {
   findAll,
-  addOne
+  addOne,
+  deleteOne
   // getChecklists,
   // createChecklist,
   // deleteChecklist
