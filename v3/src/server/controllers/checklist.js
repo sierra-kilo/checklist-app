@@ -10,11 +10,13 @@ async function getChecklists(req, res) {
 }
 
 async function addChecklist(req, res) {
-  res.send(await Checklist.addOne(req.body.name, req.body.description))
+  const data = await Checklist.addOne(req.body.name, req.body.description)
+  res.send(data)
 }
 
 async function removeChecklist(req, res) {
-  res.send(await Checklist.deleteOne(req.body.id))
+  const data = await Checklist.deleteOne(req.body.id)
+  res.send(data)
 }
 
 module.exports = {
