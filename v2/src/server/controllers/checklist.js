@@ -9,6 +9,11 @@ async function getChecklists(req, res) {
      res.send(list);
 }
 
+async function addChecklist(req, res) {
+  res.send(await Checklist.addOne(req.body.name, req.body.description))
+}
+
 module.exports = {
-  getChecklists
+  getChecklists,
+  addChecklist
 }

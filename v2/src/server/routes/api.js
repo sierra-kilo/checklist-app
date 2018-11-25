@@ -8,7 +8,7 @@ module.exports = function(app) {
 
 
   // POST route for saving a new post
-  // app.post("/api/checklist", Checklist.createChecklist);
+  app.post("/api/checklist", asyncWrap(cChecklist.addChecklist));
   //
   // app.delete('/api/checklist', Checklist.deleteChecklist)
 

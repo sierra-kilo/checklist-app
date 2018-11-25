@@ -11,10 +11,16 @@ const db = require('./db');
 
 // Returns a Promise of an array of checklist rows
 async function findAll() {
-     const sql = 'SELECT * FROM checklist ORDER BY checklist_id'
-     const result = await db.query(sql);
-     return result.rows
-     // A complete example would convert the rows into a custom object
+  const sql = 'SELECT * FROM checklist ORDER BY checklist_id'
+  const result = await db.query(sql);
+  return result.rows
+  // A complete example would convert the rows into a custom object
+}
+
+async function addOne(name, description) {
+  const params = [name, description]
+  const sql = 'INSERT INTO checklist (name, description) VALUES ($1, $2)'
+  const result = await db.query(sql, params)
 }
 
 // const createChecklist = (req, res) => {
@@ -37,7 +43,8 @@ async function findAll() {
 
 
 module.exports = {
-  findAll
+  findAll,
+  addOne
   // getChecklists,
   // createChecklist,
   // deleteChecklist
