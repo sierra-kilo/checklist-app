@@ -1,15 +1,17 @@
 const { asyncWrap } = require('../controllers/util')
 const cChecklist = require('../controllers/checklist')
+const cItem = require ('../controllers/item')
 
 module.exports = function(app) {
 
-  // GET route for getting all of the checklists
+  // checklist routes
   app.get('/api/checklist', asyncWrap(cChecklist.getChecklists))
-
-  // POST route for saving a new post
   app.post("/api/checklist", asyncWrap(cChecklist.addChecklist))
-
-  // app.delete('/api/checklist', Checklist.deleteChecklist)
   app.delete('/api/checklist', asyncWrap(cChecklist.removeChecklist))
+
+  // item routes
+  app.get('/api/item', asyncWrap(cItem.getItems))
+  app.post("/api/item", asyncWrap(cItem.addItem))
+  app.delete('/api/item', asyncWrap(cItem.removeItem))
 
 };
