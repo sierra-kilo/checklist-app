@@ -1,6 +1,7 @@
 const { asyncWrap } = require('../controllers/util')
 const cChecklist = require('../controllers/checklist')
 const cItem = require ('../controllers/item')
+const cChecklist_has_item = require ('../controllers/checklist_has_item')
 
 module.exports = function(app) {
 
@@ -13,5 +14,8 @@ module.exports = function(app) {
   app.get('/api/item', asyncWrap(cItem.getItems))
   app.post("/api/item", asyncWrap(cItem.addItem))
   app.delete('/api/item', asyncWrap(cItem.removeItem))
+
+  // checklist_has_item routes
+  app.get('/api/checklist_has_item', asyncWrap(cChecklist_has_item.getChecklistItems))
 
 };
