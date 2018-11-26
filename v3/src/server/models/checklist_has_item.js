@@ -8,26 +8,22 @@ async function findOne(id) {
   return result.rows
 }
 
-// // Returns a Promise of an array of checklist rows
-// async function findAll() {
-//   const sql = 'SELECT * FROM checklist ORDER BY checklist_id'
-//   const result = await db.query(sql);
-//   return result.rows
-//   // A complete example would convert the rows into a custom object
-// }
-//
-// async function addOne(name, description) {
-//   const params = [name, description]
-//   const sql = 'INSERT INTO checklist (name, description) VALUES ($1, $2)'
-//   const result = await db.query(sql, params)
-// }
-//
-// async function deleteOne(id) {
-//   const params = [id]
-//   const sql = 'DELETE FROM checklist WHERE checklist_id=$1'
-//   const result = await db.query(sql, params)
-// }
+// add new item to checklist_has_item
+async function addOne(checklist_id, item_id) {
+  const sql = 'INSERT INTO checklist_has_item (fk_checklist_checklist_id, fk_item_item_id) VALUES ($1, $2)'
+  const params = [checklist_id, item_id]
+  const result = await db.query(sql, params)
+}
+
+// delete item from checklist has item
+async function deleteOne(fk_checklist_checklist_id, fk_item_item_id ) {
+  const sql = 'DELETE FROM checklist_has_item WHERE (fk_checklist_checklist_id, fk_item_item_id) = ($1, $2)'
+  const params = [fk_checklist_checklist_id, fk_item_item_id]
+  const result = await db.query(sql, params)
+}
 
 module.exports = {
-  findOne
+  findOne,
+  addOne,
+  deleteOne
 }
