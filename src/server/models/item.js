@@ -6,7 +6,7 @@ async function findAll() {
   return result.rows
 }
 
-async function addOne(name, description) {
+async function createOne(name, description) {
   const params = [name, description]
   const sql = 'INSERT INTO item (name, description) VALUES ($1, $2)'
   const result = await db.query(sql, params)
@@ -22,6 +22,6 @@ async function deleteOne(id) {
 
 module.exports = {
   findAll,
-  addOne,
+  createOne,
   deleteOne
 }

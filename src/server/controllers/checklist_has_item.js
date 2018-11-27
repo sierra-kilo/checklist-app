@@ -8,7 +8,7 @@ async function getChecklistItems(req, res) {
 }
 
 async function addChecklistItem(req, res) {
-  const data = await ChecklistHasItem.addOne(req.body.checklist_id, req.body.item_id)
+  const data = await ChecklistHasItem.createOne(req.body.checklist_id, req.body.item_id)
   res.send(data)
 }
 

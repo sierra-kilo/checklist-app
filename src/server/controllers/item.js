@@ -6,7 +6,7 @@ async function getItems(req, res) {
 }
 
 async function addItem(req, res) {
-  const data = await Item.addOne(req.body.name, req.body.description)
+  const data = await Item.createOne(req.body.name, req.body.description)
   res.send(data)
 }
 

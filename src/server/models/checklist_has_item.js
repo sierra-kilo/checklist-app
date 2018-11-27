@@ -9,7 +9,7 @@ async function findOne(id) {
 }
 
 // add new item to checklist_has_item
-async function addOne(checklist_id, item_id) {
+async function createOne(checklist_id, item_id) {
   const sql = 'INSERT INTO checklist_has_item (fk_checklist_checklist_id, fk_item_item_id) VALUES ($1, $2)'
   const params = [checklist_id, item_id]
   const result = await db.query(sql, params)
@@ -24,6 +24,6 @@ async function deleteOne(fk_checklist_checklist_id, fk_item_item_id ) {
 
 module.exports = {
   findOne,
-  addOne,
+  createOne,
   deleteOne
 }

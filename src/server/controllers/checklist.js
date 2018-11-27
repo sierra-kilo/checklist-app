@@ -10,7 +10,7 @@ async function getChecklists(req, res) {
 }
 
 async function addChecklist(req, res) {
-  const data = await Checklist.addOne(req.body.name, req.body.description)
+  const data = await Checklist.createOne(req.body.name, req.body.description)
   res.send(data)
 }
 
