@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS item (
   PRIMARY KEY (item_id)
 );
 
-CREATE TABLE IF NOT EXISTS checklist_has_item (
+CREATE TABLE IF NOT EXISTS checklist_item (
   fk_checklist_checklist_id INT NOT NULL,
   fk_item_item_id INT NOT NULL,
   FOREIGN KEY (fk_checklist_checklist_id) REFERENCES checklist(checklist_id),
