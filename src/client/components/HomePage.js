@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-import ChecklistPage from './ChecklistPage'
-import ItemPage from './ItemPage'
 
-const Home = () => (
+const HomePage = () => (
   <div>
-    <ChecklistPage/>
-    <ItemPage/>
+    <h1>Home Page</h1>
   </div>
 );
 
-export default Home;
+export default HomePage;
