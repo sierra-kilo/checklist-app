@@ -1,4 +1,4 @@
-const ChecklistItem = require('../models/checklist_item');
+const ChecklistItem = require('../models/Checklist_Item');
 
 async function getChecklistItems(req, res) {
   // Get the list

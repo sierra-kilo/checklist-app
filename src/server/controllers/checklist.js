@@ -1,5 +1,5 @@
 // controllers/checklist.js
-const Checklist = require('../models/checklist');
+const Checklist = require('../models/Checklist');
 
 async function getChecklists(req, res) {
   // Get the list

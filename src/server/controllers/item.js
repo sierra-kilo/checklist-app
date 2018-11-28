@@ -1,4 +1,4 @@
-const Item = require('../models/item')
+const Item = require('../models/Item')
 
 async function getItems(req, res) {
   const list = await Item.findAll()
