@@ -16,7 +16,7 @@ module.exports = function(app) {
   app.delete('/api/item', asyncWrap(cItem.removeItem))
 
   // checklist_item routes
-  app.get('/api/checklistItem', asyncWrap(cChecklist_has_item.getChecklistItems))
+  app.get('/api/checklistItem/:id', asyncWrap(cChecklist_has_item.getChecklistItems))
   app.post('/api/checklistItem', asyncWrap(cChecklist_has_item.addChecklistItem))
   app.delete('/api/checklistItem', asyncWrap(cChecklist_has_item.removeChecklistItem))
 
