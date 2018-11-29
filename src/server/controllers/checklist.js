@@ -9,6 +9,11 @@ async function getChecklists(req, res) {
   res.send(list);
 }
 
+async function getChecklist(req, res) {
+  const data = await Checklist.findOne(req.params.id)
+  res.send(data)
+}
+
 async function addChecklist(req, res) {
   const data = await Checklist.createOne(req.body.name, req.body.description)
   res.send(data)
@@ -22,5 +27,6 @@ async function removeChecklist(req, res) {
 module.exports = {
   getChecklists,
   addChecklist,
-  removeChecklist
+  removeChecklist,
+  getChecklist
 }

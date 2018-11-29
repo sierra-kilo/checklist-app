@@ -9,6 +9,7 @@ module.exports = function(app) {
   app.get('/api/checklist', asyncWrap(cChecklist.getChecklists))
   app.post("/api/checklist", asyncWrap(cChecklist.addChecklist))
   app.delete('/api/checklist', asyncWrap(cChecklist.removeChecklist))
+  app.get('/api/checklist/:id', asyncWrap(cChecklist.getChecklist))
 
   // item routes
   app.get('/api/item', asyncWrap(cItem.getItems))

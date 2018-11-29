@@ -8,6 +8,13 @@ async function findAll() {
   // A complete example would convert the rows into a custom object
 }
 
+async function findOne(id) {
+  const sql = 'SELECT * FROM checklist WHERE checklist_id=$1'
+  const params = [id]
+  const result = await db.query(sql, params)
+  return result
+}
+
 async function createOne(name, description) {
   const params = [name, description]
   const sql = 'INSERT INTO checklist (name, description) VALUES ($1, $2)'
@@ -23,5 +30,6 @@ async function deleteOne(id) {
 module.exports = {
   findAll,
   createOne,
-  deleteOne
+  deleteOne,
+  findOne
 }

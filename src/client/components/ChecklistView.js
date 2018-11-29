@@ -5,15 +5,19 @@ class ChecklistView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checklistItems: []
+      checklistItems: [],
+      checklistInfo: {}
     };
 
     this.fetchItems = this.fetchItems.bind(this)
+    this.fetchChecklist = this.fetchChecklist.bind(this)
 
   }
 
   componentDidMount() {
-    this.fetchItems(this.props.match.params.id)
+    const checklistId = this.props.match.params.id
+    this.fetchItems(checklistId)
+    this.fetchChecklist(checklistId)
   }
 
   fetchItems = (id) => {
@@ -30,10 +34,18 @@ class ChecklistView extends Component {
     // .then(console.log(state.checklistItems))
   }
 
+  fetchChecklist = (id) => {
+    fetch("/api/checklist/" + id)
+    .then(res => res.json())
+    .then(parsedJSON => (parsedJSON.rows[0]))
+    .then(info => this.setState({checklistInfo: info}))
+  }
+
   render() {
     return (
       <div>
-        <h1>Checklist ID: {this.props.match.params.id}</h1>
+        <h1>Checklist Name: {this.state.checklistInfo.name}</h1>
+        <h2>Checklist Description: {this.state.checklistInfo.description}</h2>
         <div>
           {this.state.checklistItems.map((item) => {
             return (
