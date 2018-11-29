@@ -17,8 +17,6 @@ async function getItems(id) {
   return result.rows
 }
 
-
-
 // add new item to checklist_item
 async function createOne(checklist_id, item_id) {
   const sql = 'INSERT INTO checklist_item (fk_checklist_checklist_id, fk_item_item_id) VALUES ($1, $2)'
