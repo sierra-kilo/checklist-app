@@ -12,12 +12,22 @@ VALUES
 
   DELETE FROM item;
 
-  INSERT INTO item(name, description)
-  VALUES
-    ('item 1', 'item 1 description'),
-    ('item 2', 'item 2 description'),
-    ('item 3', 'item 3 description'),
-    ('item 4', 'item 4 description'),
-    ('item 5', 'item 5 description'),
-    ('item 6', 'item 6 description'),
-    ('item 7', 'item 7 description');
+INSERT INTO item(name, description)
+VALUES
+  ('item 1', 'item 1 description'),
+  ('item 2', 'item 2 description'),
+  ('item 3', 'item 3 description'),
+  ('item 4', 'item 4 description'),
+  ('item 5', 'item 5 description'),
+  ('item 6', 'item 6 description'),
+  ('item 7', 'item 7 description');
+
+INSERT INTO checklist_item(checklist_id, item_id)
+VALUES
+(2, 2),
+(2, 3),
+(2, 4),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6);

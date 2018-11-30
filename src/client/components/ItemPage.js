@@ -22,7 +22,7 @@ class ItemPage extends Component {
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.map(items => ({
         name: `${items.name}`,
-        id: `${items.item_id}`,
+        id: `${items.id}`,
         description: `${items.description}`
       })))
       .then(items => this.setState({allItems: items}))

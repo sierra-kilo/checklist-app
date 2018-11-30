@@ -21,9 +21,9 @@ class ChecklistForm extends Component {
       }
     })
     .then(callback)
-    .then(res => res.json())
-    .then(response => console.log('Success:', JSON.stringify(response)))
-    .catch(err => console.error('Error:', err));
+    // .then(res => res.json())
+    // .then(response => console.log('Success:', JSON.stringify(response)))
+    // .catch(err => console.error('Error:', err));
   }
 
   render() {

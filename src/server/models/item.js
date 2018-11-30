@@ -1,7 +1,7 @@
 const db = require('./db')
 
 async function findAll() {
-  const sql = 'SELECT * FROM item ORDER BY item_id'
+  const sql = 'SELECT * FROM item ORDER BY id'
   const result = await db.query(sql)
   return result.rows
 }
@@ -15,7 +15,7 @@ async function createOne(name, description) {
 
 async function deleteOne(id) {
   const params = [id]
-  const sql = 'DELETE FROM item WHERE item_id=$1'
+  const sql = 'DELETE FROM item WHERE id=$1'
   const result = await db.query(sql, params)
   console.log(result);
 }

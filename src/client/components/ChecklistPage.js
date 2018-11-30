@@ -22,7 +22,7 @@ class ChecklistPage extends Component {
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.map(checklists => ({
         name: `${checklists.name}`,
-        id: `${checklists.checklist_id}`,
+        id: `${checklists.id}`,
         description: `${checklists.description}`
       })))
       .then(checklists => this.setState({allChecklists: checklists}))

@@ -13,7 +13,7 @@ async function addChecklistItem(req, res) {
 }
 
 async function removeChecklistItem(req, res) {
-  const data = await ChecklistItem.deleteOne(req.body.fk_checklist_checklist_id, req.body.fk_item_item_id)
+  const data = await ChecklistItem.deleteOne(req.body.checklist_id, req.body.item_id)
   res.send(data)
 }
 
