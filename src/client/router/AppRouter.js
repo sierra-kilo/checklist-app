@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import HomePage from '../components/HomePage'
 import ChecklistView from '../components/ChecklistView'
 import ChecklistPage from '../components/ChecklistPage'
-import ItemPage from '../components/ItemPage'
+import ItemPage from '../components/ItemPage' 
 
 class AppRouter extends Component {
 

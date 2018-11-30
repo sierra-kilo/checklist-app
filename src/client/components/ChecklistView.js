@@ -1,13 +1,12 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Item from './Item'
 
-class ChecklistView extends PureComponent {
+class ChecklistView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       checklistItems: [],
-      checklistInfo: {},
-      key: this.props.match.params.id
+      checklistInfo: {}
     };
 
     this.fetchItems = this.fetchItems.bind(this)
@@ -16,16 +15,10 @@ class ChecklistView extends PureComponent {
   }
 
   componentDidMount() {
-    const checklistId = this.state.key
+    const checklistId = this.props.match.params.id
     this.fetchItems(checklistId)
     this.fetchChecklist(checklistId)
   }
-
-  // componentDidUpdate() {
-  //   const checklistId = this.state.key
-  //   this.fetchItems(checklistId)
-  //   this.fetchChecklist(checklistId)
-  // }
 
   fetchItems = (id) => {
     fetch("/api/checklistItem/" + id)
