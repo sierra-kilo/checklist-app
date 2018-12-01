@@ -20,6 +20,16 @@ class ChecklistView extends Component {
     this.fetchChecklist(checklistId)
   }
 
+  componentDidUpdate(prevProps) {
+  // Typical usage (don't forget to compare props):
+  if (this.props.match.params.id !== prevProps.match.params.id) {
+    const checklistId = this.props.match.params.id
+    this.fetchItems(checklistId);
+    this.fetchChecklist(checklistId)
+
+  }
+}
+
   fetchItems = (id) => {
     fetch("/api/checklistItem/" + id)
     .then(res => res.json())

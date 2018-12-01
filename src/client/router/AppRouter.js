@@ -1,6 +1,6 @@
 import React, { Component }  from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link, withRouter } from 'react-router-dom';
 import HomePage from '../components/HomePage'
 import ChecklistView from '../components/ChecklistView'
 import ChecklistPage from '../components/ChecklistPage'
@@ -18,9 +18,10 @@ class AppRouter extends Component {
           <Link to={'/checklistItem/3'}> Checklist View Page 3 </Link>
           <Switch>
             <Route path='/' component={HomePage} exact={true} />
-            <Route path='/checklistItem/:id' component={ChecklistView} />
             <Route path='/checklist' component={ChecklistPage} />
             <Route path='/item' component={ItemPage}/>
+            <Route path='/checklistItem/:id' component={ChecklistView} />
+
           </Switch>
         </div>
       </BrowserRouter>
