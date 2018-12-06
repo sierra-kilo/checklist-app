@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 const deleteChecklist = (checklist_id, callback) => {
   fetch('/api/checklist', {
@@ -20,7 +21,13 @@ const deleteChecklist = (checklist_id, callback) => {
 
 const Checklist = ({checklistName, checklistDescription, checklistId, onDelete}) => (
   <tr>
-    <td>{ checklistName }  </td>
+    <td>
+
+    <Link to={'/checklistItem/' + checklistId}> { checklistName } </Link>
+    {console.log(checklistId)}
+      
+
+    </td>
     <td>{ checklistDescription }  </td>
     <td>{ checklistId }  </td>
     <td>

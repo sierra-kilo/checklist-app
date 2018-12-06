@@ -13,9 +13,8 @@ class AppRouter extends Component {
       <BrowserRouter>
         <div>
           <Link to={'/checklist'}> Checklist Page </Link>
+          ||
           <Link to={'/item'}> Item Page </Link>
-          <Link to={'/checklistItem/2'}> Checklist View Page 2 </Link>
-          <Link to={'/checklistItem/3'}> Checklist View Page 3 </Link>
           <Switch>
             <Route path='/' component={HomePage} exact={true} />
             <Route path='/checklist' component={ChecklistPage} />
