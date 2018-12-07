@@ -14,4 +14,8 @@ app.use(
 // routes
 require('./routes/api.js')(app)
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(dist, 'index.html'));
+});
+
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`)).on('error', function(err) { console.log(err)})
