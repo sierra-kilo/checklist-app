@@ -28,6 +28,16 @@ CREATE TABLE IF NOT EXISTS response (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS checklist_item_response (
+  id SERIAL PRIMARY KEY,
+  checklist_id INT NOT NULL,
+  item_id INT NOT NULL,
+  response_id INT NOT NULL,
+  FOREIGN KEY (checklist_id) REFERENCES checklist(id),
+  FOREIGN KEY (item_id) REFERENCES item(id),
+  FOREIGN KEY (response_id) REFERENCES response(id)
+)
+
 -- CREATE TABLE IF NOT EXISTS submitted_item (
 --   id SERIAL NOT NULL UNIQUE,
 --   submitted_checklist_id INT NOT NULL,
