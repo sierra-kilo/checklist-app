@@ -37,3 +37,5 @@ VALUES
   ('YES'),
   ('NO'),
   ('N/A');
+
+INERT INTO checklist_item_response (checklist_id, item_id, response_id)
