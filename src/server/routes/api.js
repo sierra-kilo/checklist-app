@@ -26,6 +26,7 @@ module.exports = function(app) {
   app.delete('/api/checklistItem', asyncWrap(cChecklist_has_item.removeChecklistItem))
 
   // response routes
-  app.get('api/response', asyncWrap())
+  app.get('api/response', asyncWrap(cResponse.getResponses))
+  app.get('api/response/:id', asyncWrap(cResponse.getResponse))
 
 };
