@@ -28,27 +28,24 @@ CREATE TABLE IF NOT EXISTS response (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS checklist_item_response (
-  id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS submitted_checklist (
+  id SERIAL NOT NULL UNIQUE,
   checklist_id INT NOT NULL,
-  item_id INT NOT NULL,
-  response_id INT NOT NULL,
-  time_submitted TIMESTAMP,
+  time_submitted TIMESTAMP NOT NULL,
   FOREIGN KEY (checklist_id) REFERENCES checklist(id),
-  FOREIGN KEY (item_id) REFERENCES item(id),
-  FOREIGN KEY (response_id) REFERENCES response(id)
+  PRIMARY KEY (id)
 );
 
--- CREATE TABLE IF NOT EXISTS submitted_item (
---   id SERIAL NOT NULL UNIQUE,
---   submitted_checklist_id INT NOT NULL,
---   item_id INT NOT NULL,
---   response_id INT NOT NULL,
---   FOREIGN KEY (submitted_checklist_id) REFERENCES submitted_checklist(id),
---   FOREIGN KEY (item_id) REFERENCES item(id),
---   FOREIGN KEY (response_id) REFERENCES response(id),
---   PRIMARY KEY (id)
--- );
+CREATE TABLE IF NOT EXISTS submitted_item (
+  submitted_checklist_id INT NOT NULL,
+  item_id INT NOT NULL,
+  response_id INT NOT NULL,
+  FOREIGN KEY (submitted_checklist_id) REFERENCES submitted_checklist(id),
+  FOREIGN KEY (item_id) REFERENCES item(id),
+  FOREIGN KEY (response_id) REFERENCES response(id),
+  PRIMARY KEY (submitted_checklist_id, item_id)
+);
+
 
 
 -- CREATE TABLE IF NOT EXISTS checklist_due (
@@ -56,14 +53,6 @@ CREATE TABLE IF NOT EXISTS checklist_item_response (
 --   checklist_id INT NOT NULL,
 --   date_due DATE NOT NULL,
 --   time_due TIME NOT NULL,
---   FOREIGN KEY (checklist_id) REFERENCES checklist(id),
---   PRIMARY KEY (id)
--- );
-
--- CREATE TABLE IF NOT EXISTS submitted_checklist (
---   id SERIAL NOT NULL UNIQUE,
---   checklist_id INT NOT NULL,
---   time_submitted TIMESTAMP NOT NULL,
 --   FOREIGN KEY (checklist_id) REFERENCES checklist(id),
 --   PRIMARY KEY (id)
 -- );
