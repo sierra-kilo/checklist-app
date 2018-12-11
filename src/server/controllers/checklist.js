@@ -1,11 +1,7 @@
-// controllers/checklist.js
 const Checklist = require('../models/Checklist');
 
 async function getChecklists(req, res) {
-  // Get the list
   const list = await Checklist.findAll();
-
-  // Send it to the client as a JSON response
   res.send(list);
 }
 
@@ -24,9 +20,15 @@ async function removeChecklist(req, res) {
   res.send(data)
 }
 
+async function updateChecklist(req, res) {
+  const data = await Checklist.updateOne(req.body.id, req.body.name, req.body.description)
+  res.send(data)
+}
+
 module.exports = {
   getChecklists,
+  getChecklist,
   addChecklist,
   removeChecklist,
-  getChecklist
+  updateChecklist
 }

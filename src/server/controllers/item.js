@@ -5,6 +5,11 @@ async function getItems(req, res) {
   res.send(list)
 }
 
+async function getItem(req, res) {
+  const data = await Item.findOne(req.params.id)
+  res.send(data)
+}
+
 async function addItem(req, res) {
   const data = await Item.createOne(req.body.name, req.body.description)
   res.send(data)
@@ -15,8 +20,15 @@ async function removeItem(req, res) {
   res.send(data)
 }
 
+async function updateItem(req, res) {
+  const data = await Item.updateOne(req.body.id, req.body.name, req.body.description)
+  res.send(data)
+}
+
 module.exports = {
   getItems,
+  getItem,
   addItem,
-  removeItem
+  removeItem,
+  updateItem
 }
