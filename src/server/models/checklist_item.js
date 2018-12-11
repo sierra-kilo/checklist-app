@@ -1,17 +1,9 @@
 const db = require('./db');
 
-// get checklist_item
-// async function getItems(id) {
-//   const sql = 'SELECT * FROM checklist_item WHERE fk_checklist_checklist_id=$1'
-//   const params = [id]
-//   const result = await db.query(sql, params);
-//   return result.rows
-// }
-
-async function getItems(id) {
-  const sql = `select * from checklist_item
-  join item on id = checklist_item.item_id
-  where checklist_item.checklist_id = $1`
+async function findMany(id) {
+  const sql = `SELECT * FROM checklist_item
+  JOIN item ON id = checklist_item.item_id
+  WHERE checklist_item.checklist_id = $1`
   const params = [id]
   const result = await db.query(sql, params);
   return result.rows
@@ -32,11 +24,7 @@ async function deleteOne(checklist_id, item_id ) {
 }
 
 module.exports = {
-  getItems,
+  findMany,
   createOne,
   deleteOne
 }
-
-// 'select * from checklist_item
-// join item on item_id = checklist_item.fk_item_item_id
-// where checklist_item.fk_checklist_checklist_id = $1'

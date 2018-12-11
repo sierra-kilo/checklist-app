@@ -2,7 +2,7 @@ const ChecklistItem = require('../models/Checklist_Item');
 
 async function getChecklistItems(req, res) {
   // Get the list
-  const list = await ChecklistItem.getItems(req.params.id);
+  const list = await ChecklistItem.findMany(req.params.id);
   // Send it to the client as a JSON response
   res.send(list);
 }
