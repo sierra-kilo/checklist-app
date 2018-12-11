@@ -19,17 +19,31 @@ async function createOne(name, description) {
   const params = [name, description]
   const sql = 'INSERT INTO checklist (name, description) VALUES ($1, $2)'
   const result = await db.query(sql, params)
+  return result
 }
 
 async function deleteOne(id) {
   const params = [id]
   const sql = 'DELETE FROM checklist WHERE id=$1'
   const result = await db.query(sql, params)
+  return result
+}
+
+async function updateOne(id, name, description) {
+  const sql = `
+  UPDATE checklist
+    SET name=$2, description=$3
+    WHERE id=$1
+  `
+  const params = [id, name, description]
+  const result = await db.query(sql, params)
+  return result
 }
 
 module.exports = {
   findAll,
+  findOne,
   createOne,
   deleteOne,
-  findOne
+  updateOne
 }
