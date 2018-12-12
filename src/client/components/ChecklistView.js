@@ -31,7 +31,7 @@ class ChecklistView extends Component {
 }
 
   fetchItems = (id) => {
-    fetch("/api/checklistItem/" + id)
+    fetch("/api/checklist-item/" + id)
     .then(res => res.json())
     // .then(parsedJSON => console.log(parsedJSON))
     .then(parsedJSON => parsedJSON.map(items => ({

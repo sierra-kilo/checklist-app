@@ -1,7 +1,7 @@
 const { asyncWrap } = require('../controllers/util')
 const cChecklist = require('../controllers/Checklist')
 const cItem = require ('../controllers/Item')
-const cChecklist_has_item = require ('../controllers/ChecklistItem')
+const cChecklistHasItem = require ('../controllers/ChecklistItem')
 const cSubmittedChecklistItemResponse = require ('../controllers/SubmittedChecklistItemResponse')
 const cSubmittedItem = require('../controllers/SubmittedItem')
 
@@ -22,9 +22,9 @@ module.exports = function(app) {
   app.delete('/api/item', asyncWrap(cItem.removeItem))
 
   // checklist_item routes
-  app.get('/api/checklist-item/:id', asyncWrap(cChecklist_has_item.getChecklistItems))
-  app.post('/api/checklist-item', asyncWrap(cChecklist_has_item.addChecklistItem))
-  app.delete('/api/checklist-item', asyncWrap(cChecklist_has_item.removeChecklistItem))
+  app.get('/api/checklist-item/:id', asyncWrap(cChecklistHasItem.getChecklistItems))
+  app.post('/api/checklist-item', asyncWrap(cChecklistHasItem.addChecklistItem))
+  app.delete('/api/checklist-item', asyncWrap(cChecklistHasItem.removeChecklistItem))
 
   // submitted_checklist routes
 

@@ -19,7 +19,7 @@ class AppRouter extends Component {
             <Route path='/' component={HomePage} exact={true} />
             <Route path='/checklist' component={ChecklistPage} />
             <Route path='/item' component={ItemPage}/>
-            <Route path='/checklistItem/:id' component={ChecklistView} />
+            <Route path='/checklist-item/:id' component={ChecklistView} />
 
           </Switch>
         </div>
