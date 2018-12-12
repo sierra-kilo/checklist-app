@@ -1,8 +1,8 @@
 const { asyncWrap } = require('../controllers/util')
-const cChecklist = require('../controllers/checklist')
-const cItem = require ('../controllers/item')
-const cChecklist_has_item = require ('../controllers/checklist_item')
-const cSubmittedChecklistItemResponse = require ('../controllers/submitted_checklist_item_response')
+const cChecklist = require('../controllers/Checklist')
+const cItem = require ('../controllers/Item')
+const cChecklist_has_item = require ('../controllers/ChecklistItem')
+const cSubmittedChecklistItemResponse = require ('../controllers/SubmittedChecklistItemResponse')
 const cSubmittedItem = require('../controllers/SubmittedItem')
 
 module.exports = function(app) {
