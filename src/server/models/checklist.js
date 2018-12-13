@@ -1,4 +1,5 @@
 const db = require('./db');
+const format = require('pg-format')
 
 // Returns a Promise of an array of checklist rows
 async function findAll() {
@@ -19,6 +20,14 @@ async function createOne(name, description) {
   const params = [name, description]
   const sql = 'INSERT INTO checklist (name, description) VALUES ($1, $2)'
   const result = await db.query(sql, params)
+  return result
+}
+
+async function createMany(values) {
+  const params = values
+  const sql = format('INSERT INTO checklist (name, description) VALUES %L', params )
+  const result = await db.query(sql)
+  console.log(values, result, sql, params)
   return result
 }
 
@@ -45,5 +54,6 @@ module.exports = {
   findOne,
   createOne,
   deleteOne,
-  updateOne
+  updateOne,
+  createMany
 }

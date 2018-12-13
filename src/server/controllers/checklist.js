@@ -25,10 +25,17 @@ async function updateChecklist(req, res) {
   res.send(data)
 }
 
+async function addChecklists(req, res) {
+  const data = await Checklist.createMany([['t2', 't2d'], ['t3', 't3d'], ['t4', 't4d'],]
+  )
+  res.send(data)
+}
+
 module.exports = {
   getChecklists,
   getChecklist,
   addChecklist,
   removeChecklist,
-  updateChecklist
+  updateChecklist,
+  addChecklists
 }

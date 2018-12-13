@@ -4,6 +4,7 @@ const cItem = require ('../controllers/Item')
 const cChecklistHasItem = require ('../controllers/ChecklistItem')
 const cSubmittedChecklistItemResponse = require ('../controllers/SubmittedChecklistItemResponse')
 const cSubmittedItem = require('../controllers/SubmittedItem')
+const cSubmittedChecklist = require('../controllers/SubmittedChecklist')
 
 module.exports = function(app) {
 
@@ -13,6 +14,7 @@ module.exports = function(app) {
   app.post('/api/checklist', asyncWrap(cChecklist.addChecklist))
   app.put('/api/checklist/:id', asyncWrap(cChecklist.updateChecklist))
   app.delete('/api/checklist', asyncWrap(cChecklist.removeChecklist))
+  app.post('/api/checklists', asyncWrap(cChecklist.addChecklists))
 
   // item routes
   app.get('/api/item', asyncWrap(cItem.getItems))
@@ -27,11 +29,12 @@ module.exports = function(app) {
   app.delete('/api/checklist-item', asyncWrap(cChecklistHasItem.removeChecklistItem))
 
   // submitted_checklist routes
+  app.get('/api/submitted-checklist', asyncWrap(cSubmittedChecklist.getAllSubmittedChecklists))
 
   // submitted_item routes
   app.post('/api/submitted-item', cSubmittedItem.addSubmittedItem)
 
   // submitted_checklist_item_response routes
-  app.get('/api/submitted-checklist-item-response/:id', asyncWrap(cSubmittedChecklistItemResponse.getSubmittedResponses))
+  app.get('/api/submitted-checklist-item-response/:id', asyncWrap(cSubmittedChecklistItemResponse.getSubmittedResponse))
 
 };
