@@ -26,7 +26,7 @@ async function updateChecklist(req, res) {
 }
 
 async function addChecklists(req, res) {
-  const data = await Checklist.createMany([['t2', 't2d'], ['t3', 't3d'], ['t4', 't4d'],]
+  const data = await Checklist.createMany([['t5', 't5d'], ['t6', 't6d'], ['t7', 't7d']]
   )
   res.send(data)
 }
