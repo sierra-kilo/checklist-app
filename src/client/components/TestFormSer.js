@@ -12,7 +12,10 @@ class TestForm extends Component {
   seeData = () => {
     let form = document.querySelector('.TestForm')
     let obj = serialize(form, { hash: true });
-    console.log(obj)
+    var result = Object.keys(obj).map(function(key) {
+      return [Number(key), obj[key]];
+    })
+    console.log(result);
   }
 
 
@@ -27,26 +30,26 @@ class TestForm extends Component {
         }}>
         <ul>
           <li>
-              <input type="radio" name="whatever item" value="YES" /> YES
+              <input type="radio" name="1" value='1' /> YES
 
-              <input type="radio" name="whatever item" value="NO"/> NO
+              <input type="radio" name="1" value='2'/> NO
 
-              <input type="radio" name="whatever item" value="N/A"/> N/A
-
-          </li>
-          <li>
-              <input type="radio" name="whatever item 2" value="YES" /> YES
-
-              <input type="radio" name="whatever item 2" value="NO"/> NO
-
-              <input type="radio" name="whatever item 2" value="N/A"/> N/A
+              <input type="radio" name="1" value='3'/> N/A
 
           </li>
           <li>
-              <input type="radio" name="whatever item 3" value="YES" /> YES
-              <input type="radio" name="whatever item 3" value="NO"/> NO
+              <input type="radio" name="2" value='1' /> YES
 
-              <input type="radio" name="whatever item 3" value="N/A"/> N/A
+              <input type="radio" name="2" value='2'/> NO
+
+              <input type="radio" name="2" value='3'/> N/A
+
+          </li>
+          <li>
+              <input type="radio" name="3" value='1' /> YES
+              <input type="radio" name="3" value='2'/> NO
+
+              <input type="radio" name="3" value='3'/> N/A
 
           </li>
         </ul>
