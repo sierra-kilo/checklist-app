@@ -2393,6 +2393,10 @@ for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
 
+form-serialize@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/form-serialize/-/form-serialize-0.7.2.tgz#b0a2ff0c22026fb6d3d15c9d33f6de6a432e4732"
+
 forwarded@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
