@@ -11,7 +11,14 @@ app.use(
   })
 )
 
-app.use(express.static(__dirname, '..', '..', 'dist')));
+const dist = path.join(__dirname, '..', '..', 'dist');
+
+// enable ssl redirect
+app.use(sslRedirect());
+
+// middleware for production
+app.use(express.static('dist'));
+
 
 // routes
 require('./routes/api.js')(app)
