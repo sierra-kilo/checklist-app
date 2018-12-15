@@ -8,10 +8,10 @@
   "main": "src/server/index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "yarn run build && node src/server/index.js",
+    "start": "node src/server/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
-    "server": "nodemon src/server/server.js",
-    "heroku-prebuild": "yarn && yarn run build",
+    "server": "nodemon src/server/index.js",
+    "heroku-postbuild": "yarn && yarn run build",
     "dev": "concurrently \"yarn run server\" \"yarn run client\""
   },
   "author": "Shant Kevorkian",
