@@ -1,4 +1,4 @@
-const ChecklistItemResponse = require('../models/SubmittedChecklistItemResponse');
+const ChecklistItemResponse = require('../models/SubmittedChecklistSubmittedItemResponse');
 
 async function getSubmittedResponses(req, res) {
   const list = await ChecklistItemResponse.findMany(req.params.id);

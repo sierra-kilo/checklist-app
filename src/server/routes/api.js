@@ -2,7 +2,7 @@ const { asyncWrap } = require('../controllers/util')
 const cChecklist = require('../controllers/Checklist')
 const cItem = require ('../controllers/Item')
 const cChecklistHasItem = require ('../controllers/ChecklistItem')
-const cSubmittedChecklistItemResponse = require ('../controllers/SubmittedChecklistItemResponse')
+const cSubmittedChecklistSubmittedItemResponse = require ('../controllers/SubmittedChecklistSubmittedItemResponse')
 const cSubmittedItem = require('../controllers/SubmittedItem')
 const cSubmittedChecklist = require('../controllers/SubmittedChecklist')
 
@@ -35,6 +35,6 @@ module.exports = function(app) {
   app.post('/api/submitted-item', cSubmittedItem.addSubmittedItem)
 
   // submitted_checklist_item_response routes
-  app.get('/api/submitted-checklist-item-response/:id', asyncWrap(cSubmittedChecklistItemResponse.getSubmittedResponse))
+  app.get('/api/submitted-checklist-item-response/:id', asyncWrap(cSubmittedChecklistSubmittedItemResponse.getSubmittedResponse))
 
 };
