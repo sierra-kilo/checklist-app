@@ -11,7 +11,7 @@ app.use(
   })
 )
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, '..', '..', 'dist')));
 
 // routes
 require('./routes/api.js')(app)
