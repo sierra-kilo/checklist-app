@@ -1,6 +1,6 @@
 const db = require('./db');
 
-async function findMany(id) {
+async function findMany(submitted_checklist_id) {
   const sql = `
   SELECT i.name, i.description, r.response
     FROM submitted_checklist sc

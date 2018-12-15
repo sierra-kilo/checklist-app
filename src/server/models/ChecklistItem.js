@@ -1,10 +1,10 @@
 const db = require('./db');
 
-async function findMany(id) {
+async function findMany(checklist_id) {
   const sql = `SELECT * FROM checklist_item
   JOIN item ON id = checklist_item.item_id
   WHERE checklist_item.checklist_id = $1`
-  const params = [id]
+  const params = [checklist_id]
   const result = await db.query(sql, params);
   return result.rows
 }

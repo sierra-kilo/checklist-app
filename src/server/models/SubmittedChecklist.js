@@ -6,9 +6,9 @@ async function findAll() {
   return list.rows
 }
 
-async function findMany(id) {
+async function findMany(checklist_id) {
   const sql = 'SELECT * FROM submitted_checklist WHERE checklist_id=$1'
-  const params = [id]
+  const params = [checklist_id]
   const data = await db.query(sql, params)
   return data.rows
 }
@@ -20,9 +20,9 @@ async function findOne(id) {
   return data
 }
 
-async function createOne(id) {
+async function createOne(checklist_id) {
   const sql = 'INSERT INTO submitted_checklist(name, time_submitted) VALUES($1, NOW() RETURNING id)'
-  const params = [id]
+  const params = [checklist_id]
   const data = await db.query(sql, params)
   return data
 }
