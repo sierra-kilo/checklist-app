@@ -1,4 +1,5 @@
 const db = require('./db')
+const format = require('pg-format')
 
 async function findMany(submitted_checklist_id) {
   const sql = `
@@ -27,11 +28,15 @@ async function createOne(submitted_checklist_id, item_id, response_id) {
 
 }
 
-// async function createMany(values) {
-//
-// }
+async function createMany(values) {
+  const params = values
+  const sql = format('INSERT INTO submitted_item (submitted_checklist_id, item_id, response_id) VALUES %L', params)
+  const result = await db.query(sql)
+  return result
+}
 
 module.exports = {
   findMany,
-  createOne
+  createOne,
+  createMany
 }

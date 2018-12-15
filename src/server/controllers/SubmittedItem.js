@@ -11,7 +11,13 @@ async function addSubmittedItem(req, res) {
   res.send(data)
 }
 
+async function addSubmittedItems(req, res) {
+  const data = await SubmittedItem.createMany(req.body.values)
+  res.send(data)
+}
+
 module.exports = {
   getSubmittedItemResponses,
+  addSubmittedItems,
   addSubmittedItem
 }

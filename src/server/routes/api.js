@@ -32,9 +32,9 @@ module.exports = function(app) {
   app.get('/api/submitted-checklist', asyncWrap(cSubmittedChecklist.getAllSubmittedChecklists))
 
   // submitted_item routes
-  app.post('/api/submitted-item', asyncWrap(cSubmittedItem.addSubmittedItem))
-
-  // submitted_checklist_item_response routes
   app.get('/api/submitted-checklist-item-response/:id', asyncWrap(cSubmittedItem.getSubmittedItemResponses))
+  // app.post('/api/submitted-item', asyncWrap(cSubmittedItem.addSubmittedItem))
+  app.post('/api/submitted-item', asyncWrap(cSubmittedItem.addSubmittedItems))
+
 
 };
