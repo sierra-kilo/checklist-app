@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ChecklistForm from './ChecklistForm'
+import AddChecklistForm from './AddChecklistForm'
 import Checklist from './Checklist'
 
 class ChecklistPage extends Component {
@@ -31,7 +31,7 @@ class ChecklistPage extends Component {
   render() {
     return (
       <div>
-        <ChecklistForm
+        <AddChecklistForm
           onAdd={() => this.fetchChecklists()}
         />
         <h2>Checklists</h2>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ChecklistForm extends Component {
+class AddChecklistForm extends Component {
   constructor(props) {
     super(props);
     // this.state = ;
@@ -49,4 +49,4 @@ class ChecklistForm extends Component {
 
 }
 
-export default ChecklistForm
+export default AddChecklistForm
