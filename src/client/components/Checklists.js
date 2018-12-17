@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AddChecklistForm from './AddChecklistForm'
 import Checklist from './Checklist'
 
-class ChecklistsPage extends Component {
+class Checklists extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,4 +57,4 @@ class ChecklistsPage extends Component {
 
 }
 
-export default ChecklistsPage;
+export default Checklists;
