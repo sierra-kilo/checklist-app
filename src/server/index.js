@@ -1,4 +1,4 @@
-// const sslRedirect = require('heroku-ssl-redirect');
+const sslRedirect = require('heroku-ssl-redirect');
 require('dotenv').config()
 const path = require('path')
 const express = require('express')
@@ -15,10 +15,10 @@ app.use(
 
 const dist = path.join(__dirname, '..', '..', 'dist');
 
-enable ssl redirect
+// enable ssl redirect
 app.use(sslRedirect());
 
-middleware for production
+// middleware for production
 app.use(express.static('dist'));
 
 
