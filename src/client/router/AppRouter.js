@@ -2,7 +2,7 @@ import React, { Component }  from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch, Link, withRouter } from 'react-router-dom';
 import HomePage from '../components/HomePage'
-import ChecklistView from '../components/ChecklistView'
+import ChecklistDetailView from '../components/ChecklistDetailView'
 import ChecklistsPage from '../components/ChecklistsPage'
 import ItemPage from '../components/ItemPage'
 import TestForm from '../components/TestFormSer'
@@ -20,7 +20,7 @@ class AppRouter extends Component {
             <Route path='/' component={HomePage} exact={true} />
             <Route path='/checklist' component={ChecklistsPage} />
             <Route path='/item' component={ItemPage}/>
-            <Route path='/checklist-item/:id' component={ChecklistView} />
+            <Route path='/checklist-item/:id' component={ChecklistDetailView} />
             <Route path='/test-form' component={TestForm}/>
 
           </Switch>

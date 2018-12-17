@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Item from './Item'
 
-class ChecklistView extends Component {
+class ChecklistDetailView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,4 +68,4 @@ class ChecklistView extends Component {
 
 }
 
-export default ChecklistView;
+export default ChecklistDetailView;
