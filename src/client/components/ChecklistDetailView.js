@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Item from './Item'
+import ChecklistItem from './ChecklistItem'
 
 class ChecklistDetailView extends Component {
   constructor(props) {
@@ -57,15 +58,30 @@ class ChecklistDetailView extends Component {
         <h1>Checklist Name: {this.state.checklistInfo.name}</h1>
         <h2>Checklist Description: {this.state.checklistInfo.description}</h2>
         <div>
-          {this.state.checklistItems.map((item) => {
-            return (
-              <h3 key={item.itemId}>{item.itemName} || {item.itemDescription}</h3>
-           )})}
+          <form className='submittionForm'
+            onSubmit={(e) => {
+              e.preventDefault()
+              console.log('clicked');
+            }
+            }>
+            <ul>
+              {this.state.checklistItems.map((item) => {
+                return (
+                      <ChecklistItem
+                        key={item.itemId}
+                        itemId={item.itemId}
+                        itemName={item.itemName}
+                        itemDescription={item.itemDescription}
+                      />
+               )}
+              )}
+            </ul>
+            <button type='submit'>Submit</button>
+          </form>
         </div>
       </div>
-    );
+    )
   }
-
 }
 
 export default ChecklistDetailView;
