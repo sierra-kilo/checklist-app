@@ -19,7 +19,7 @@ async function createOne(checklist_id, item_id) {
 
 // delete item from checklist has item
 async function deleteOne(checklist_id, item_id ) {
-  const sql = 'DELETE FROM checklist_item WHERE (checklist_id, item_id) = ($1, $2)'
+  const sql = 'DELETE FROM checklist_item WHERE checklist_id = $1 AND item_id = $2'
   const params = [checklist_id, item_id]
   const result = await db.query(sql, params)
   return result
