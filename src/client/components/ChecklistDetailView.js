@@ -115,9 +115,7 @@ class ChecklistDetailView extends Component {
   // }
 
   submitForm = () => {
-    let id = this.submitChecklist(this.state.checklistInfo.id)
-    let values = this.getSubmittionValues(id)
-
+    console.log('clicked');
   }
 
   render() {
