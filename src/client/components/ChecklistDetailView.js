@@ -13,8 +13,8 @@ class ChecklistDetailView extends Component {
 
     this.fetchItems = this.fetchItems.bind(this)
     this.fetchChecklist = this.fetchChecklist.bind(this)
-    this.getSubmittionValues = this.getSubmittionValues.bind(this)
     this.submitChecklist = this.submitChecklist.bind(this)
+    this.getSubmittionValues = this.getSubmittionValues.bind(this)
     this.submitItems = this.submitItems.bind(this)
     this.submitForm = this.submitForm.bind(this)
 
@@ -57,33 +57,36 @@ class ChecklistDetailView extends Component {
     .then(info => this.setState({checklistInfo: info}))
   }
 
-  getSubmittionValues = (submitted_checklist_id) => {
-    var form = document.querySelector('.submittionForm');
-    var obj = serialize(form, { hash: true });
-    var result = Object.keys(obj).map(function(key) {
-      return [submitted_checklist_id, key, obj[key]];
+  submitChecklist = (checklist_id) => {
+    return new Promise(resolve => {
+      fetch('/api/submit-checklist', {
+        method: 'POST',
+        body: JSON.stringify(
+          {
+            'checklist_id': checklist_id
+          }
+        ),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (result) {
+        let id =  result.rows[0].id
+        console.log(id)
+      })
     })
-    return result
   }
 
-  submitChecklist = (checklist_id) => {
-    fetch('/api/submit-checklist', {
-      method: 'POST',
-      body: JSON.stringify(
-        {
-          'checklist_id': checklist_id
-        }
-      ),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(function (response) {
-      return response.json()
-    })
-    .then(function (result) {
-      let id =  result.rows[0].id
-      console.log(id)
+  getSubmittionValues = (submitted_checklist_id) => {
+    return new Promise(resolve => {
+      var form = document.querySelector('.submittionForm');
+      var obj = serialize(form, { hash: true });
+      var result = Object.keys(obj).map(function(key) {
+        return [submitted_checklist_id, key, obj[key]];
+      })
     })
   }
 
@@ -92,7 +95,7 @@ class ChecklistDetailView extends Component {
       method: 'POST',
       body: JSON.stringify(
         {
-          values
+          "values": values
         }
       ),
       headers: {
@@ -103,7 +106,7 @@ class ChecklistDetailView extends Component {
       return response.json()
     })
     .then(function (result) {
-      return result
+      console.log(result)
     })
   }
 
@@ -113,9 +116,11 @@ class ChecklistDetailView extends Component {
   //   let result = await submitItems(values)
   //   return result
   // }
-
+  
   submitForm = () => {
-    console.log('clicked');
+    this.submitChecklist(this.state.checklistInfo.id)
+    .then(id => this.getSubmittionValues(id))
+    .then(values => {this.submitItems(values)})
   }
 
   render() {
