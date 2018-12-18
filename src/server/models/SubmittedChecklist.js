@@ -21,7 +21,7 @@ async function findOne(id) {
 }
 
 async function createOne(checklist_id) {
-  const sql = 'INSERT INTO submitted_checklist(name, time_submitted) VALUES($1, NOW()) RETURNING id'
+  const sql = 'INSERT INTO submitted_checklist(checklist_id, time_submitted) VALUES($1, NOW()) RETURNING id'
   const params = [checklist_id]
   const data = await db.query(sql, params)
   return data

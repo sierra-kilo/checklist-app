@@ -10,9 +10,9 @@ class checklistItem extends Component {
   render() {
     return (
       <li>
-      {this.props.itemName}, {this.props.itemDescription} <input type="radio" name={this.props.itemId} value="YES" /> YES
-      <input type="radio" name={this.props.itemId} value="NO"/> NO
-      <input type="radio" name={this.props.itemId} value="N/A"/> N/A
+      {this.props.itemName}, {this.props.itemDescription} <input type="radio" name={this.props.itemId} value={1} /> YES
+      <input type="radio" name={this.props.itemId} value={2}/> NO
+      <input type="radio" name={this.props.itemId} value={3}/> N/A
       </li>
     );
   }

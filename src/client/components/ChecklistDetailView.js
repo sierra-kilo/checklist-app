@@ -1,17 +1,24 @@
 import React, { Component } from 'react'
 import Item from './Item'
 import ChecklistItem from './ChecklistItem'
+var serialize = require('form-serialize');
 
 class ChecklistDetailView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       checklistItems: [],
-      checklistInfo: {}
+      checklistInfo: {},
+      editView: false
     };
 
     this.fetchItems = this.fetchItems.bind(this)
     this.fetchChecklist = this.fetchChecklist.bind(this)
+    this.submitChecklist = this.submitChecklist.bind(this)
+    this.getSubmittionValues = this.getSubmittionValues.bind(this)
+    this.submitItems = this.submitItems.bind(this)
+    this.submitForm = this.submitForm.bind(this)
+    this.toggleEditView = this.toggleEditView.bind(this)
 
   }
 
@@ -52,18 +59,93 @@ class ChecklistDetailView extends Component {
     .then(info => this.setState({checklistInfo: info}))
   }
 
+  submitChecklist = (checklist_id) => {
+    return new Promise(resolve => {
+      fetch('/api/submit-checklist', {
+        method: 'POST',
+        body: JSON.stringify(
+          {
+            'checklist_id': checklist_id
+          }
+        ),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        return response.json()
+      })
+      .then(result => {
+        let id =  result.rows[0].id
+        resolve(id)
+        // console.log(id)
+      })
+    })
+  }
+
+  getSubmittionValues = (submitted_checklist_id) => {
+    return new Promise(resolve => {
+      var form = document.querySelector('.submittionForm');
+      var obj = serialize(form, { hash: true });
+      var result = Object.keys(obj).map(function(key) {
+        return [submitted_checklist_id, key, obj[key]];
+      })
+      resolve(result)
+    })
+  }
+
+  submitItems = (values) => {
+    fetch('/api/submitted-item', {
+      method: 'POST',
+      body: JSON.stringify(
+        {
+          "values": values
+        }
+      ),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (result) {
+      console.log(result)
+    })
+  }
+
+  // async function submitForm() {
+  //   let id = await this.submitChecklist(this.state.checklistInfo.id)
+  //   let values = await this.getSubmittionValues(id)
+  //   let result = await submitItems(values)
+  //   return result'
+  // }
+
+  submitForm = () => {
+    this.submitChecklist(this.state.checklistInfo.id)
+    .then(id => this.getSubmittionValues(id))
+    .then(values => this.submitItems(values))
+  }
+
+  toggleEditView = () => {
+    if (this.state.editView === true) {
+      this.setState({editView: false})
+    } else this.setState({editView: true})
+  }
+
   render() {
     return (
       <div>
         <h1>Checklist Name: {this.state.checklistInfo.name}</h1>
         <h2>Checklist Description: {this.state.checklistInfo.description}</h2>
+        <button onClick={this.toggleEditView}>  EDIT </button>
         <div>
           <form className='submittionForm'
             onSubmit={(e) => {
               e.preventDefault()
-              console.log('clicked');
+              this.submitForm()
             }
-            }>
+          }>
             <ul>
               {this.state.checklistItems.map((item) => {
                 return (
