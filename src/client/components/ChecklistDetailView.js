@@ -8,7 +8,8 @@ class ChecklistDetailView extends Component {
     super(props);
     this.state = {
       checklistItems: [],
-      checklistInfo: {}
+      checklistInfo: {},
+      editView: false
     };
 
     this.fetchItems = this.fetchItems.bind(this)
@@ -17,6 +18,7 @@ class ChecklistDetailView extends Component {
     this.getSubmittionValues = this.getSubmittionValues.bind(this)
     this.submitItems = this.submitItems.bind(this)
     this.submitForm = this.submitForm.bind(this)
+    this.toggleEditView = this.toggleEditView.bind(this)
 
   }
 
@@ -125,11 +127,18 @@ class ChecklistDetailView extends Component {
     .then(values => this.submitItems(values))
   }
 
+  toggleEditView = () => {
+    if (this.state.editView === true) {
+      this.setState({editView: false})
+    } else this.setState({editView: true})
+  }
+
   render() {
     return (
       <div>
         <h1>Checklist Name: {this.state.checklistInfo.name}</h1>
         <h2>Checklist Description: {this.state.checklistInfo.description}</h2>
+        <button onClick={this.toggleEditView}>  EDIT </button>
         <div>
           <form className='submittionForm'
             onSubmit={(e) => {
