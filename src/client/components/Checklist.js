@@ -24,7 +24,6 @@ const Checklist = ({checklistName, checklistDescription, checklistId, onDelete})
     <td>
 
     <Link to={'/checklist-item/' + checklistId}> { checklistName } </Link>
-    {console.log(checklistId)}
       
 
     </td>

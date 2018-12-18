@@ -19,6 +19,7 @@ class ChecklistDetailView extends Component {
     this.submitItems = this.submitItems.bind(this)
     this.submitForm = this.submitForm.bind(this)
     this.toggleEditView = this.toggleEditView.bind(this)
+    this.removeChecklistItem = this.removeChecklistItem.bind(this)
 
   }
 
@@ -133,6 +134,18 @@ class ChecklistDetailView extends Component {
     } else this.setState({editView: true})
   }
 
+  removeChecklistItem = (checklist_id, item_id) => {
+    fetch('/api/checklist-item', {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        'checklist_id': checklist_id,
+        'item_id': item_id
+      })
+    })
+    .then(() => {this.fetchItems(this.state.checklistInfo.id)})
+  }
+
   render() {
     return (
       <div>
@@ -154,6 +167,9 @@ class ChecklistDetailView extends Component {
                         itemId={item.itemId}
                         itemName={item.itemName}
                         itemDescription={item.itemDescription}
+                        editView={this.state.editView}
+                        checklistId={this.state.checklistInfo.id}
+                        removeChecklistItem={this.removeChecklistItem}
                       />
                )}
               )}
