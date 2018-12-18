@@ -15,7 +15,8 @@ class AddChecklistForm extends Component {
       body: JSON.stringify(
         {
           'name': document.getElementById('name').value,
-          'description': document.getElementById('description').value}), // data can be `string` or {object}!
+          'description': document.getElementById('description').value
+        }), // data can be `string` or {object}!
       headers:{
         'Content-Type': 'application/json'
       }

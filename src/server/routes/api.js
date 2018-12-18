@@ -30,6 +30,7 @@ module.exports = function(app) {
 
   // submitted_checklist routes
   app.get('/api/submitted-checklist', asyncWrap(cSubmittedChecklist.getAllSubmittedChecklists))
+  app.post('/api/submit-checklist', asyncWrap(cSubmittedChecklist.submitChecklist))
 
   // submitted_item routes
   app.get('/api/submitted-checklist-item-response/:id', asyncWrap(cSubmittedItem.getSubmittedItemResponses))

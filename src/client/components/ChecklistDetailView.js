@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Item from './Item'
 import ChecklistItem from './ChecklistItem'
+var serialize = require('form-serialize');
 
 class ChecklistDetailView extends Component {
   constructor(props) {
@@ -12,6 +13,10 @@ class ChecklistDetailView extends Component {
 
     this.fetchItems = this.fetchItems.bind(this)
     this.fetchChecklist = this.fetchChecklist.bind(this)
+    this.getSubmittionValues = this.getSubmittionValues.bind(this)
+    this.submitChecklist = this.submitChecklist.bind(this)
+    this.submitItems = this.submitItems.bind(this)
+    this.submitForm = this.submitForm.bind(this)
 
   }
 
@@ -52,6 +57,69 @@ class ChecklistDetailView extends Component {
     .then(info => this.setState({checklistInfo: info}))
   }
 
+  getSubmittionValues = (submitted_checklist_id) => {
+    var form = document.querySelector('.submittionForm');
+    var obj = serialize(form, { hash: true });
+    var result = Object.keys(obj).map(function(key) {
+      return [submitted_checklist_id, key, obj[key]];
+    })
+    return result
+  }
+
+  submitChecklist = (checklist_id) => {
+    fetch('/api/submit-checklist', {
+      method: 'POST',
+      body: JSON.stringify(
+        {
+          'checklist_id': checklist_id
+        }
+      ),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (result) {
+      let id =  result.rows[0].id
+      console.log(id)
+    })
+  }
+
+  submitItems = (values) => {
+    fetch('/api/submitted-item', {
+      method: 'POST',
+      body: JSON.stringify(
+        {
+          values
+        }
+      ),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (result) {
+      return result
+    })
+  }
+
+  // async function submitForm() {
+  //   let id = await this.submitChecklist(this.state.checklistInfo.id)
+  //   let values = await this.getSubmittionValues(id)
+  //   let result = await submitItems(values)
+  //   return result
+  // }
+
+  submitForm = () => {
+    let id = this.submitChecklist(this.state.checklistInfo.id)
+    let values = this.getSubmittionValues(id)
+
+  }
+
   render() {
     return (
       <div>
@@ -61,9 +129,9 @@ class ChecklistDetailView extends Component {
           <form className='submittionForm'
             onSubmit={(e) => {
               e.preventDefault()
-              console.log('clicked');
+              this.submitForm()
             }
-            }>
+          }>
             <ul>
               {this.state.checklistItems.map((item) => {
                 return (
