@@ -70,12 +70,13 @@ class ChecklistDetailView extends Component {
           'Content-Type': 'application/json'
         }
       })
-      .then(function (response) {
+      .then(response => {
         return response.json()
       })
-      .then(function (result) {
+      .then(result => {
         let id =  result.rows[0].id
-        console.log(id)
+        resolve(id)
+        // console.log(id)
       })
     })
   }
@@ -87,6 +88,7 @@ class ChecklistDetailView extends Component {
       var result = Object.keys(obj).map(function(key) {
         return [submitted_checklist_id, key, obj[key]];
       })
+      resolve(result)
     })
   }
 
@@ -114,13 +116,13 @@ class ChecklistDetailView extends Component {
   //   let id = await this.submitChecklist(this.state.checklistInfo.id)
   //   let values = await this.getSubmittionValues(id)
   //   let result = await submitItems(values)
-  //   return result
+  //   return result'
   // }
-  
+
   submitForm = () => {
     this.submitChecklist(this.state.checklistInfo.id)
     .then(id => this.getSubmittionValues(id))
-    .then(values => {this.submitItems(values)})
+    .then(values => this.submitItems(values))
   }
 
   render() {
