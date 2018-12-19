@@ -18,6 +18,8 @@ class AppRouter extends Component {
           <Link to={'/checklist'}> Checklist Page </Link>
           ||
           <Link to={'/item'}> Item Page </Link>
+          ||
+          <Link to={'/submitted-checklists'}> Submitted Checklists </Link>
           <Switch>
             <Route path='/' component={HomePage} exact={true} />
             <Route path='/checklist' component={Checklists} />
