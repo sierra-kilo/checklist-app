@@ -23,7 +23,7 @@ const Item = ({itemName, itemDescription, itemId, onDelete, checklistEditView, a
     <td>{ itemName }  </td>
     <td>{ itemDescription }  </td>
     <td>{ itemId }  </td>
-    {checklistEditView === false &&
+    {checklistEditView == null  &&
       <td>
         <button
           onClick={(e) => {
