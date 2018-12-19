@@ -1,7 +1,18 @@
 const db = require('./db')
 
+// async function findAll() {
+//   const sql = 'SELECT * FROM submitted_checklist ORDER BY id';
+//   const list = await db.query(sql)
+//   return list.rows
+// }
+
 async function findAll() {
-  const sql = 'SELECT * FROM submitted_checklist ORDER BY id';
+  const sql = `
+    SELECT c.name, sc.id, sc.checklist_id, sc.time_submitted
+      FROM submitted_checklist sc
+      JOIN checklist c
+      ON sc.checklist_id = c.id
+  `
   const list = await db.query(sql)
   return list.rows
 }
