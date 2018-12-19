@@ -147,6 +147,22 @@ class ChecklistDetailView extends Component {
     .then(() => {this.fetchItems(this.state.checklistInfo.id)})
   }
 
+  addChecklistItem = (checklist_id, item_id) => {
+    fetch('/api/checklist-item', {
+      method: 'POST',
+      body: JSON.stringify(
+        {
+          "checklist_id": checklist_id,
+          "item_id": item_id
+        }
+      ),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(() => {this.fetchItems(this.state.checklistInfo.id)})
+  }
+
   render() {
     return (
       <div>
@@ -181,6 +197,8 @@ class ChecklistDetailView extends Component {
         {this.state.editView === true &&
           <ItemPage
             checklistEditView={this.state.editView}
+            addChecklistItem={this.addChecklistItem}
+            checklistId={this.state.checklistInfo.id}
           />}
       </div>
     )

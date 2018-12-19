@@ -18,7 +18,7 @@ const deleteItem = (item_id, callback) => {
 }
 
 
-const Item = ({itemName, itemDescription, itemId, onDelete, checklistEditView}) => (
+const Item = ({itemName, itemDescription, itemId, onDelete, checklistEditView, addChecklistItem, checklistId}) => (
   <tr>
     <td>{ itemName }  </td>
     <td>{ itemDescription }  </td>
@@ -39,7 +39,7 @@ const Item = ({itemName, itemDescription, itemId, onDelete, checklistEditView}) 
         <button
           onClick={(e) => {
             e.preventDefault()
-            console.log('add item to checklist');
+            addChecklistItem(checklistId, itemId)
           }}
         > Add </button>
       </td>
