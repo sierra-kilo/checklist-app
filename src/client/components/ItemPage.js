@@ -46,6 +46,7 @@ class ItemPage extends Component {
                     itemName={item.name}
                     itemDescription={item.description}
                     onDelete={() => this.fetchItems()}
+                    checklistEditView={this.props.checklistEditView}
                   />
                )})}
             </tbody>

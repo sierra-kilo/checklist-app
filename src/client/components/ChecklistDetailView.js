@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Item from './Item'
 import ChecklistItem from './ChecklistItem'
+import ItemPage from './ItemPage'
 var serialize = require('form-serialize');
 
 class ChecklistDetailView extends Component {
@@ -177,6 +178,10 @@ class ChecklistDetailView extends Component {
             <button type='submit'>Submit</button>
           </form>
         </div>
+        {this.state.editView === true &&
+          <ItemPage
+            checklistEditView={this.state.editView}
+          />}
       </div>
     )
   }

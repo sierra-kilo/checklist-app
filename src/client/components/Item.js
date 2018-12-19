@@ -18,20 +18,32 @@ const deleteItem = (item_id, callback) => {
 }
 
 
-const Item = ({itemName, itemDescription, itemId, onDelete}) => (
+const Item = ({itemName, itemDescription, itemId, onDelete, checklistEditView}) => (
   <tr>
     <td>{ itemName }  </td>
     <td>{ itemDescription }  </td>
     <td>{ itemId }  </td>
-    <td>
-      <button
-        onClick={(e) => {
-            e.preventDefault()
-            deleteItem(itemId, onDelete)
+    {checklistEditView === false &&
+      <td>
+        <button
+          onClick={(e) => {
+              e.preventDefault()
+
+              deleteItem(itemId, onDelete)
+            }
           }
-        }
-      >Delete</button>
-    </td>
+        > Delete</button>
+    </td>}
+    {checklistEditView === true &&
+      <td>
+        <button
+          onClick={(e) => {
+            e.preventDefault()
+            console.log('add item to checklist');
+          }}
+        > Add </button>
+      </td>
+      }
   </tr>
 );
 
