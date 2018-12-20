@@ -27,7 +27,6 @@ class AppRouter extends Component {
             <Route path='/checklist-item/:id' component={ChecklistDetailView} />
             <Route path='/test-form' component={TestForm}/>
             <Route path='/submitted-checklists' component={SubmittedChecklists} />
-
           </Switch>
         </div>
       </BrowserRouter>
