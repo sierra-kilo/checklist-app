@@ -174,6 +174,7 @@ class ChecklistDetailView extends Component {
             onSubmit={(e) => {
               e.preventDefault()
               this.submitForm()
+              this.props.history.push('/')
             }
           }>
             <ul>
