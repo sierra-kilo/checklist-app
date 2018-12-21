@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 class SubmittedChecklists extends Component {
 
@@ -38,7 +39,8 @@ class SubmittedChecklists extends Component {
                   <tr>
                     <td>{submittedChecklist.id}</td>
                     <td>{submittedChecklist.checklist_id}</td>
-                    <td>{submittedChecklist.name}</td>
+                    <td><Link to={'/submitted-checklist/' + submittedChecklist.id}> { submittedChecklist.name } </Link></td>
+                    // <td>{submittedChecklist.name}</td>
                     <td>{submittedChecklist.time_submitted}</td>
                   </tr>
                )})}
