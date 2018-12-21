@@ -6,6 +6,7 @@ import ChecklistDetailView from '../components/ChecklistDetailView'
 import Checklists from '../components/Checklists'
 import ItemPage from '../components/ItemPage'
 import SubmittedChecklists from '../components/SubmittedChecklists'
+import SubmittedChecklistDetailView from '../components/SubmittedChecklistDetailView'
 
 import TestForm from '../components/TestFormSer'
 
@@ -27,6 +28,8 @@ class AppRouter extends Component {
             <Route path='/checklist-item/:id' component={ChecklistDetailView} />
             <Route path='/test-form' component={TestForm}/>
             <Route path='/submitted-checklists' component={SubmittedChecklists} />
+            <Route path='/submitted-checklist/:id' component={SubmittedChecklistDetailView} />
+
           </Switch>
         </div>
       </BrowserRouter>
